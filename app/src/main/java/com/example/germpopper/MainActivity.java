@@ -1,20 +1,25 @@
 package com.example.germpopper;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private float acelVal;
     private float acelLast;
     private float shake;
     private SensorManager sm;
+
+    private AnimationDrawable frameAnimation;
+    private ImageView img;
 
     private final SensorEventListener sensorListener = new SensorEventListener() {
         @Override
@@ -30,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
 
             if(shake > 12){
                 Toast.makeText(getApplicationContext(), "SHAKIN' BRAH!", Toast.LENGTH_LONG).show();
+
+                // Play pop animation
+                img.setBackgroundResource(R.drawable.pop_animation);
+
+                // Get the background, which has been compiled to an AnimationDrawable object.
+                frameAnimation = (AnimationDrawable) img.getBackground();
+                frameAnimation.start();
             }
         }
 
@@ -50,5 +62,24 @@ public class MainActivity extends AppCompatActivity {
         acelVal = SensorManager.GRAVITY_EARTH;
         acelLast = SensorManager.GRAVITY_EARTH;
         shake = 0.0f;
+
+        // Load the ImageView that will host the animation and
+        // set its background to our AnimationDrawable XML resource.
+        img = findViewById(R.id.germ_background);
+        img.setBackgroundResource(R.drawable.idle_animation);
+
+        // Get the background, which has been compiled to an AnimationDrawable object.
+        frameAnimation = (AnimationDrawable) img.getBackground();
+
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Start the animation. Must be started after link made after onCreate() finishes
+        frameAnimation.start();
+    }
+
+
 }

@@ -1,10 +1,11 @@
 <!-- Source: https://developer.android.com/reference/android/graphics/drawable/AnimationDrawable.html -->
 
 <!-- Animation frames are files inside the res/drawable/ folder -->
-<animation-list android:id="@+id/selected"
-    android:oneshot="false"
+<animation-list
+    android:oneshot="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/all1" android:duration="400" />
     <item android:drawable="@drawable/all2" android:duration="400" />
     <item android:drawable="@drawable/all3" android:duration="400" />
+    <item android:drawable="@drawable/all3_fade" android:duration="400" />
 </animation-list>
