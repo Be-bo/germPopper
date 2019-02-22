@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity{
             shake = shake * 0.9f + delta;
 
             if(shake > 12){
-                Toast.makeText(getApplicationContext(), "SHAKIN' BRAH!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "SHAKIN' BRAH!", Toast.LENGTH_LONG).show();
 
                 // Play pop animation
                 img.setBackgroundResource(R.drawable.pop_animation);
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity{
 
         // Load the ImageView that will host the animation and
         // set its background to our AnimationDrawable XML resource.
-        img = findViewById(R.id.germ_background);
+        img = (ImageView)findViewById(R.id.germ_background);
         img.setBackgroundResource(R.drawable.idle_animation);
 
         // Get the background, which has been compiled to an AnimationDrawable object.
