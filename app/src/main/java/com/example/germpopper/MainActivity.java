@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity{
             float delta = acelVal - acelLast;
             shake = shake * 0.9f + delta;
 
-            if(shake > 40){
+            if(shake > 20){
                 //Toast.makeText(getApplicationContext(), "SHAKIN' BRAH!", Toast.LENGTH_LONG).show();
 
                 // Play pop animation
